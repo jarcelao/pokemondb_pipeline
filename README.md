@@ -18,7 +18,9 @@ In addition, the organization's data team is quite small. Thus, they want their 
 ## Data Schema
 The scraped data has been transformed to follow a star schema. In other words, the data warehouse is designed to follow Kimball methodology. Here's the schema visualized:
 
-We make the assumption here that we want to use a Pokemon's stats as the fact table, as they are values that quantitatively describe our target business object (i.e. a Pokemon).
+![schema image](schema.png)
+
+We make the assumption here that we want to use a Pokemon's stats as the fact table, as they are values that quantitatively describe our target business object (i.e. a Pokemon). We also create the field `internal_pokemon_id` as evolutions of the same Pokemon are assigned the same ID in the dataset.
 
 ## Data Architecture
 We use Mage as the main orchestrator for the data pipeline. Apart from providing typical orchestration capabilities (e.g. DAGs, Schedule Triggers), it also prides itself on its ease of use for small data teams who want to focus on the actual pipeline logic. In a production environment, Mage can be deployed as a managed Docker container in a service such as [GCP Cloud Run](https://cloud.google.com/run?hl=en).
