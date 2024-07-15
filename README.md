@@ -9,7 +9,14 @@ This is a toy project inspired by [this post](https://www.facebook.com/groups/da
 ## Quickstart
 The exported data is already available at `/sql_export`. You may use DuckDB's `IMPORT DATABASE` statement to load the data.
 
-Otherwise, if you'd like to run the full Mage project, clone the repository and follow [this guide](https://docs.mage.ai/production/ci-cd/local-cloud/repository-setup). Make sure you have Docker ready on your environment.
+Otherwise, if you'd like to run the full Mage project, clone the repository and run the below commands while inside the folder. Make sure you have Docker ready on your environment.
+
+```
+docker build --tag pokemondb_pipeline:latest .
+docker run -it -p 6789:6789 pokemondb_pipeline:latest /app/run_app.sh mage start pokemondb_pipeline
+```
+
+You should be able to access Mage at `http://localhost:6789`
 
 ## Business Case
 What follows is a hypothetical situation that provides justification for the choices made in the data schema and architecture. I made these as personal guidelines to simulate a real-world use case.
